@@ -1,0 +1,22 @@
+{
+  "name": "book-source-client",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./lib/book-source-client.js",
+  "exports": {
+    ".": "./lib/book-source-client.js"
+  },
+  "files": [
+    "lib",
+    "cdn-sources.json",
+    "cdn-manifest.json",
+    "font-catalog.json",
+    "font-cleanup.md",
+    "Base_Font_Thumbs",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build:data": "python ./scripts/build_asset_manifest.py && python ./scripts/build_font_catalog.py"
+  }
+}

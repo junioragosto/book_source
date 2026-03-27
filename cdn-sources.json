@@ -1,0 +1,67 @@
+{
+  "variables": {
+    "git_origin": "auto",
+    "git_owner": "auto",
+    "git_repo": "auto",
+    "git_branch": "auto",
+    "git_commit": "auto"
+  },
+  "limitProfiles": {
+    "jsdelivr-gh": {
+      "singleFileBytes": 20971520,
+      "packageBytes": 157286400,
+      "notes": "Configured thresholds for jsDelivr GitHub-backed assets."
+    }
+  },
+  "sources": [
+    {
+      "id": "primary-jsdelivr-main",
+      "provider": "jsdelivr-gh",
+      "enabled": true,
+      "limitProfile": "jsdelivr-gh",
+      "urlTemplate": "https://cdn.jsdelivr.net/gh/{git_owner}/{git_repo}@{git_branch}/{encoded_path}"
+    },
+    {
+      "id": "primary-jsdelivr-pinned",
+      "provider": "jsdelivr-gh",
+      "enabled": true,
+      "limitProfile": "jsdelivr-gh",
+      "urlTemplate": "https://cdn.jsdelivr.net/gh/{git_owner}/{git_repo}@{git_commit}/{encoded_path}"
+    },
+    {
+      "id": "primary-github-raw-main",
+      "provider": "github-raw",
+      "enabled": true,
+      "urlTemplate": "https://raw.githubusercontent.com/{git_owner}/{git_repo}/{git_branch}/{encoded_path}"
+    },
+    {
+      "id": "primary-github-raw-pinned",
+      "provider": "github-raw",
+      "enabled": true,
+      "urlTemplate": "https://raw.githubusercontent.com/{git_owner}/{git_repo}/{git_commit}/{encoded_path}"
+    },
+    {
+      "id": "backup-jsdelivr-main",
+      "provider": "jsdelivr-gh",
+      "enabled": false,
+      "limitProfile": "jsdelivr-gh",
+      "urlTemplate": "https://cdn.jsdelivr.net/gh/{backup_owner}/{backup_repo}@{backup_branch}/{encoded_path}",
+      "variables": {
+        "backup_owner": "replace-me",
+        "backup_repo": "replace-me",
+        "backup_branch": "main"
+      }
+    },
+    {
+      "id": "backup-github-raw-main",
+      "provider": "github-raw",
+      "enabled": false,
+      "urlTemplate": "https://raw.githubusercontent.com/{backup_owner}/{backup_repo}/{backup_branch}/{encoded_path}",
+      "variables": {
+        "backup_owner": "replace-me",
+        "backup_repo": "replace-me",
+        "backup_branch": "main"
+      }
+    }
+  ]
+}

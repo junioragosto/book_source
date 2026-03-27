@@ -1,2 +1,4 @@
-# Keep this oversized font out of Git history and GitHub pushes.
+# Keep oversized local-only assets out of Git history and GitHub pushes.
 Base_Fonts/SourceHanSans.ttc
+temp/
+__pycache__/
